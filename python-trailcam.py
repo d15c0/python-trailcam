@@ -112,7 +112,7 @@ with picamera.PiCamera() as camera:
     camera.shutter_speed = 10000 # in micro-seconds 
     output = StreamingOutput()
     camera.start_recording(output, format='mjpeg')
-    server = StreamingServer(('0.0.0.0', 8000), StreamingHandler)
+    server = StreamingServer(('0.0.0.0', <whatever>), StreamingHandler)
     server_thread = Thread(target=server.serve_forever)
     output = StreamingOutput()
     camera.start_recording(output, format='mjpeg', splitter_port=2, resize=(STREAM_WIDTH, STREAM_HEIGHT))
