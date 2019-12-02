@@ -42,7 +42,7 @@ PAGE="""\
 <img src="stream.mjpg" width=STREAM_WIDTH height=STREAM_HEIGHT />
 </body>
 </html>
-""".format(**locals())
+""".format(**locals()) #this allows variables to be used in the html code...
 
 
 class StreamingOutput(object):
@@ -120,12 +120,7 @@ with picamera.PiCamera() as camera:
     def capturePhoto():
         while button.is_pressed:
             datetimeNow = datetime.datetime.now()
-            #datetimeFix = (datetimeNow - timedelta(seconds=2)) #.time()
             datetimeNowStr = datetimeNow.strftime("%Y-%m-%d %H-%M-%S")
-            #datetimeFixStr = datetimeFix.strftime("%Y-%m-%d_%H-%M-%S")
-            #camera.annotate_text = (datetimeNowStr)
-            #camera.capture(datetimeFixStr + '.jpg', use_video_port=True)
-            #camera.capture(datetimeNowStr + '.jpg', use_video_port=True)
             camera.annotate_text = datetimeNowStr
             time.sleep(2.0 - ((time.time() - STARTTIME) % 2.0))
             camera.capture(datetimeNowStr + '.jpg', use_video_port=True)
